@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm run build)",
+      "Bash(npm install jiti)",
+      "Bash(npm install -g .)",
+      "Bash(skills --version)",
+      "Bash(skills --help)",
+      "Bash(skills find)",
+      "Bash(skills list)",
+      "Bash(skills list -g)",
+      "Bash(skills add vercel-labs/agent-skills --list)",
+      "Bash(skills add vercel-labs/agent-skills --skill web-design-guidelines --agent claude-code)",
+      "WebFetch(domain:github.com)",
+      "Bash(npx -y @modelcontextprotocol/server-memory --version)",
+      "Bash(npm cache clean --force)",
+      "WebFetch(domain:www.google.com)",
+      "mcp__plugin_playwright_playwright__browser_run_code"
+    ]
+  }
+}

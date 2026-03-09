@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__craft__folders_create",
+      "mcp__craft__documents_create",
+      "Bash(python -c \"import sys; sys.path.insert\\(0, ''.''\\); from app.engine import rag_engine\")"
+    ]
+  }
+}

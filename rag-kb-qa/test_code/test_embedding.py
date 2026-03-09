@@ -11,7 +11,7 @@ import os
 # 添加项目根目录到 Python 路径
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from app.rag import text_to_embedding, texts_to_embeddings, smart_chunk
+from app.engine.rag_engine import text_to_embedding, texts_to_embeddings, smart_chunk
 
 def test_single_embedding():
     """测试单个文本向量化"""

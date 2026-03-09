@@ -8,12 +8,12 @@
 
 import sys
 import os
+
+from app.processors.chunk_processor import SmartChunker
 # 添加项目根目录到 Python 路径
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
-from app.rag import smart_chunk
-from chunking_methods import paragraph_chunk
 
 
 def test_smart_chunk_basic():
@@ -24,9 +24,20 @@ def test_smart_chunk_basic():
     机器学习是人工智能的核心技术之一。它通过算法让计算机从数据中学习模式，而不需要明确编程每一个可能的情况。
     """
 
-    chunks = smart_chunk(test_text, chunk_size=200, chunk_overlap=20)
+    chunks = SmartChunker.chunk(text, chunk_size=200, chunk_overlap=20)
     print(chunks)  # 输出切块结果以供调试
     # pytest 断言
+    assert isinstance(chunks, list)
+    assert len(chunks) > 0
+    assert all(isinstance(chunk, str) for chunk in chunks)
+    
+def test_llm_semantic_split():
+    """测试 llm_semantic_split 功能"""
+    test_text = """
+    什么是RAG？RAG的原理是什么？
+    """
+    chunks = llm_semantic_split(test_text)
+    print(chunks)  # 输出切块结果以供调试
     assert isinstance(chunks, list)
     assert len(chunks) > 0
     assert all(isinstance(chunk, str) for chunk in chunks)

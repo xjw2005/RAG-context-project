@@ -1,0 +1,28 @@
+{
+  "include": [
+    "rag-kb-qa"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*"
+  ],
+  "venvPath": "rag-kb-qa",
+  "venv": "venv",
+  "pythonVersion": "3.10",
+  "pythonPlatform": "Windows",
+  "executionEnvironments": [
+    {
+      "root": "rag-kb-qa",
+      "pythonVersion": "3.10",
+      "pythonPlatform": "Windows",
+      "extraPaths": [
+        "rag-kb-qa"
+      ]
+    }
+  ],
+  "typeCheckingMode": "basic",
+  "useLibraryCodeForTypes": true,
+  "autoImportCompletions": true,
+  "indexing": true
+}

@@ -1,21 +1,11 @@
 from fastapi import FastAPI
-from app.schemas import IngestRequest, QueryRequest, QueryResponse, Citation
-from app import rag
+from app.api.routes import router
 
+# 创建FastAPI应用
 app = FastAPI(title="RAG KB QA MVP")
 
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+# 注册路由
+app.include_router(router)
 
-@app.post("/ingest")
-def ingest(req: IngestRequest):
-    rag.ingest(req.doc_id, req.text)
-    return {"message": "ingested", "doc_id": req.doc_id}
 
-@app.post("/query", response_model=QueryResponse)
-def query(req: QueryRequest):
-    contexts = rag.retrieve(req.question, req.top_k)
-    answer = rag.generate_answer(req.question, contexts)
-    citations = [Citation(doc_id=d, snippet=s) for d, s in contexts]
-    return QueryResponse(answer=answer, citations=citations)
+
