@@ -96,7 +96,7 @@ def _split_sentences(text: str) -> List[str]:
 
 class TextChunker(ABC):
     @abstractmethod
-    def chunk(self, text: str) -> List[str]:
+    def chunk(self, text: str, **kwargs) -> List[str]:
         raise NotImplementedError
 
 

@@ -3,7 +3,19 @@
     "allow": [
       "mcp__craft__folders_create",
       "mcp__craft__documents_create",
-      "Bash(python -c \"import sys; sys.path.insert\\(0, ''.''\\); from app.engine import rag_engine\")"
+      "Bash(python -c \"import sys; sys.path.insert\\(0, ''.''\\); from app.engine import rag_engine\")",
+      "mcp__craft__folders_list",
+      "mcp__craft__documents_list",
+      "mcp__craft__blocks_get",
+      "mcp__craft__blocks_add",
+      "mcp__craft__documents_delete",
+      "mcp__craft__markdown_add",
+      "mcp__plugin_github_github__create_branch",
+      "mcp__plugin_github_github__create_or_update_file",
+      "mcp__plugin_github_github__create_pull_request"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\12909\\.claude"
     ]
   }
 }

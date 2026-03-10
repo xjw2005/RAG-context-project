@@ -138,7 +138,7 @@ class VectorStore:
         similarities, indices = self.search(query_embedding, top_k * 3)  # 获取更多结果
         
         # 应用权重
-        weights = {'original': 1.0, 'summary': 0.8, 'questions': 1.2}
+        weights = {'original': 1.0, 'summary': 0.9, 'questions': 0.7}
         weighted_results = []
         
         for sim, idx in zip(similarities[0], indices[0]):

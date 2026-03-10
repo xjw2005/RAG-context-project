@@ -35,10 +35,14 @@ class RAGEngine:
         try:
             # 保存原始文档
             self.document_store.save(doc_id, text)
-            
-            # 切块
-            chunks = self.chunker.chunk(text)
-            
+
+            # 切块 - 多向量检索需要更大的块以生成高质量摘要和问题
+            chunks = self.chunker.chunk(
+                text,
+                similarity_threshold=0.65,  # 提高阈值，减少分块
+                max_chunk_size=1000        # 增加块大小，约500个汉字
+            )
+
             # 生成多向量
             from app.processors.text_processor import MultiVectorOrchestrator, LLMTextGenerator, SummaryGenerator, HypotheticalQuestionGenerator
             

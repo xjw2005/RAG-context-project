@@ -75,7 +75,9 @@ class MultiVectorOrchestrator:
         
     def generate_vectors(self, chunks: List[str]) -> dict:
         from app.utils.text_utils import texts_to_embeddings
+        import logging
 
+        logger = logging.getLogger(__name__)
         result = {} # {"original": np.ndarray, "summary": np.ndarray, "questions": np.ndarray, "question_mapping": List[int], "summary_texts": List[str], "question_texts": List[str]}
 
         # 1. 原始向量
@@ -85,6 +87,11 @@ class MultiVectorOrchestrator:
         summaries = [self.summary_generator.generate(chunk) for chunk in chunks]
         result['summary'] = texts_to_embeddings(summaries)
         result['summary_texts'] = summaries  # 保存摘要文本
+
+        # 打印前3个摘要样例
+        logger.info(f"生成了 {len(summaries)} 个摘要，样例：")
+        for i, summary in enumerate(summaries[:3]):
+            logger.info(f"  摘要 {i}: {summary[:100]}...")
 
         # 3. 问题向量
         all_questions = []
@@ -98,5 +105,10 @@ class MultiVectorOrchestrator:
         result['questions'] = texts_to_embeddings(all_questions)
         result['question_mapping'] = question_mapping
         result['question_texts'] = all_questions  # 保存问题文本
+
+        # 打印前5个问题样例
+        logger.info(f"生成了 {len(all_questions)} 个问题，样例：")
+        for i, question in enumerate(all_questions[:5]):
+            logger.info(f"  问题 {i}: {question}")
 
         return result
