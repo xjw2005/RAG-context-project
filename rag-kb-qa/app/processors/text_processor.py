@@ -1,16 +1,10 @@
 #app/processors/text_processor.py
 # 1. 抽象接口
 from abc import ABC, abstractmethod
-<<<<<<< HEAD
 from typing import List
 
 import numpy as np
 from torchgen import gen
-=======
-from typing import List, Dict
-
-import numpy as np
->>>>>>> 3391dd2169dab50cb42fde4ef53d8e4bdb7a96dd
 
 
 # 1. 抽象接口
@@ -18,10 +12,6 @@ class TextGenerator(ABC):
     @abstractmethod
     def generate(self, prompt: str, max_tokens: int = 150) -> str:  
         pass
-<<<<<<< HEAD
-=======
-
->>>>>>> 3391dd2169dab50cb42fde4ef53d8e4bdb7a96dd
 # 2. 实现类
 class VectorProcessor(ABC):
     @abstractmethod
